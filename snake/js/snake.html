@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SNAKE</title>
+  <link rel="stylesheet" type="text/css" href="../style.css">
+  <link rel="stylesheet" type="text/css" href="../fontello-arrows/css/fontello.css">
+  <style>
+    * {
+      -webkit-touch-callout: none; /* prevent callout to copy image, etc when tap to hold */
+      -webkit-text-size-adjust: none; /* prevent webkit from resizing text to fit */
+      /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+      -webkit-tap-highlight-color: rgba(0,0,0,0);
+      -webkit-user-select: none; /* prevent copy paste, to allow, change 'none' to 'text' */
+    }
+    body {
+      width: 100%;
+      height: 100vh;
+      padding: 0;
+      margin: 0;
+      background-color: darkslateblue;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    #score {
+      margin-left:auto;
+      margin-right: auto;
+      color:limegreen;
+      letter-spacing: 2px;
+      font-size: 20px;
+      text-transform: uppercase;
+      font-family: Inconsolata, sans-serif;
+    }
+    #defaultCanvas0 {
+      -webkit-box-shadow: 0px 0px 10px 0px rgba(25,224,197,0.6);
+      -moz-box-shadow: 0px 0px 10px 0px rgba(25,224,197,0.6);
+      box-shadow: 0px 0px 10px 0px rgba(25,224,197,0.6);
+      margin-top: 3px;
+    }
+  </style>
+
+</head>
+<body>
+
+  <div id="score">Score: <b>0</b></div>
+
+  <div class="buttonContainer">
+  <table>
+    <tr>
+      <td></td>
+      <td>
+        <div id="upBtn" class="Btn" onclick="upMove()"><i class="icon-up-open"></i></div>
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <div id="leftBtn" class="Btn" onclick="leftMove()"><i class="icon-left-open"></i></div>
+      </td>
+      <td></td>
+      <td>
+        <div id="rightBtn" class="Btn" onclick="rightMove()"><i class="icon-right-open"></i></div>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <div id="downBtn" class="Btn" onclick="downMove()"><i class="icon-down-open"></i></div>
+      </td>
+      <td></td>
+    </tr>
+  </table>
+  </div> <!-- class="buttonContainer" -->
+  <script src="../p5.js"></script>
+  <script src="Snake.js"></script>
+  <script src="sketch.js"></script>
+  <script src="Dot.js"></script>
+
+  <script>
+    function upMove() {
+      if (snake.yspeed <= 0) {
+        snake.dir(0, -1);
+      } else {
+        snake.dir(0, 1);
+      }
+    }
+    function leftMove() {
+      if (snake.xspeed <= 0) {
+        snake.dir(-1, 0);
+      } else {
+        snake.dir(1, 0);
+      }
+    }
+    function rightMove() {
+      if (snake.xspeed >= 0) {
+        snake.dir(1, 0);
+      } else {
+        snake.dir(-1, 0);
+      }
+    }
+    function downMove() {
+      if (snake.yspeed >= 0) {
+        snake.dir(0, 1);
+      } else {
+        snake.dir(0, -1);
+      }
+    }
+  </script>
+</body>
+</html>
